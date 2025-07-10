@@ -1,0 +1,32 @@
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environments
+env/
+venv/
+rag-env/
+
+# Environment variables
+.env
+.env.*
+
+# Model files / vector DB / cache
+*.ckpt
+*.pt
+*.bin
+*.pkl
+.cache/
+vectordb/
+chunks/
+
+# Logs
+*.log
+logs/
+
+# Streamlit
+.streamlit/secrets.toml
+
+# System files
+.DS_Store
+Thumbs.db
