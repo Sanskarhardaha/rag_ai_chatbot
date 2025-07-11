@@ -21,7 +21,7 @@ def load_lottie(path: str):
 
 #  Page Setup
 st.set_page_config(page_title="🤖 RAG PDF Chatbot", layout="wide")
-st.markdown("<h1 style='text-align: center;'> RAG-AI Chatbot </h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'> RAG- PDF AI Chatbot </h1>", unsafe_allow_html=True)
 
 #  Two Lottie animations side by side
 col1, col2 = st.columns(2)
