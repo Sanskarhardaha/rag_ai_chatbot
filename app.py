@@ -48,11 +48,11 @@ with st.sidebar:
     st.markdown("**LLM Model:** `Mistral-7B-Instruct`")
     st.markdown(f"**Chunks Indexed:** `{get_chunk_count()}`")
 
-    if st.button("🧹 Clear Chat"):
+    if st.button("Clear Chat"):
         st.session_state.messages = []
         st.session_state.sources = []
 
-    if st.button("📥 Download Chat"):
+    if st.button("Download Chat"):
         if st.session_state.messages:
             chat_log = "\n\n".join([f"User: {q}\nBot: {r}" for q, r in st.session_state.messages])
             st.download_button("📄 Save Chat", chat_log, file_name="chat_history.txt")
