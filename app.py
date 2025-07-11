@@ -10,20 +10,20 @@ from src.retriever import get_chunk_count
 from langchain_core.documents import Document
 import time
 
-# ✅ Windows async fix
+#  Windows async fix
 if sys.platform.startswith("win") and sys.version_info >= (3, 8):
     asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
 
-# ✅ Lottie loader
+#  Lottie loader
 def load_lottie(path: str):
     with open(path, "r", encoding="utf-8") as f:
         return json.load(f)
 
-# ✅ Page Setup
+#  Page Setup
 st.set_page_config(page_title="🤖 RAG PDF Chatbot", layout="wide")
-st.markdown("<h1 style='text-align: center;'>📄 RAG-AI Chatbot using Mistral 7B </h1>", unsafe_allow_html=True)
+st.markdown("<h1 style='text-align: center;'> RAG-AI Chatbot </h1>", unsafe_allow_html=True)
 
-# ✅ Two Lottie animations side by side
+#  Two Lottie animations side by side
 col1, col2 = st.columns(2)
 
 with col1:
@@ -32,19 +32,19 @@ with col1:
 with col2:
     st_lottie(load_lottie("assets/typing-bot.json"), height=200, key="bot2")
 
-# ✅ Load Embedder & LLM
+#  Load Embedder & LLM
 embedder = get_embedder()
 llm = load_llm()
 
-# ✅ Initialize session state
+#  Initialize session state
 if "messages" not in st.session_state:
     st.session_state.messages = []
 if "sources" not in st.session_state:
     st.session_state.sources = []
 
-# ✅ Sidebar
+#  Sidebar
 with st.sidebar:
-    st.markdown("## ⚙️ Information")
+    st.markdown("##  Information")
     st.markdown("**LLM Model:** `Mistral-7B-Instruct`")
     st.markdown(f"**Chunks Indexed:** `{get_chunk_count()}`")
 
@@ -55,19 +55,19 @@ with st.sidebar:
     if st.button("Download Chat"):
         if st.session_state.messages:
             chat_log = "\n\n".join([f"User: {q}\nBot: {r}" for q, r in st.session_state.messages])
-            st.download_button("📄 Save Chat", chat_log, file_name="chat_history.txt")
+            st.download_button(" Save Chat", chat_log, file_name="chat_history.txt")
 
-# ✅ Input box
+#  Input box
 query = st.text_input("🔍 Ask a question about the document", placeholder="e.g. List the user policies in bullet points")
 
-# ✅ Handle input
+#  Handle input
 if query:
     with st.spinner("🤖 Thinking..."):
         response, docs = generate_answer(query, embedder, llm)
         st.session_state.messages.append((query, response))
         st.session_state.sources.append(docs)
 
-# ✅ Display chat history with typing animation
+#  Display chat history with typing animation
 if st.session_state.messages:
     for i in range(len(st.session_state.messages) - 1, -1, -1):
         q, r = st.session_state.messages[i]
@@ -82,7 +82,7 @@ if st.session_state.messages:
             for word in r.split():
                 full_text += word + " "
                 placeholder.markdown(f"**Bot:** {full_text}▌")
-                time.sleep(0.025)
+                time.sleep(0.05)
             placeholder.markdown(f"**Bot:** {full_text.strip()}")
 
             with st.expander("📄 Sources used in this answer"):
@@ -91,4 +91,4 @@ if st.session_state.messages:
                     st.code(doc.page_content.strip(), language="markdown")
 
 else:
-    st.info("💬 Ask a question about the document to begin.")
+    st.info(" Ask a question about the document to begin.")
