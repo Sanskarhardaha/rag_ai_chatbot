@@ -27,6 +27,6 @@ streamlit run app.py
 
 
 
-##  Sample Queries
-- "What is the refund policy?"
-- "Is data shared with third parties?"
+##  info
+- git hub repo link- https://github.com/Sanskarhardaha/rag_ai_chatbot.git
+- demo video link - https://drive.google.com/file/d/1R-PxnYm4GSa7BrPHTqsLMNc-kM-HKT57/view?usp=sharing
