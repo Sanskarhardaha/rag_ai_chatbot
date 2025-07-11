@@ -30,3 +30,4 @@ streamlit run app.py
 ##  info
 - git hub repo link- https://github.com/Sanskarhardaha/rag_ai_chatbot.git
 - demo video link - https://drive.google.com/file/d/1hEBEQgl8TgLsvahItwItTJtxMBhaXI-n/view?usp=sharing
+- deployed app link - https://ragaichatbot.streamlit.app/
